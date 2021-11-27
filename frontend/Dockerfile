@@ -1,11 +1,9 @@
 # этап сборки (build stage)
 FROM node:16.3-alpine3.12 AS build-stage
 WORKDIR /app
-#COPY package*.json ./
-#RUN npm install
-COPY dist dist
-
-# RUN npm run build
+COPY package*.json ./
+RUN npm install
+RUN npm run build
 
 # этап production (production-stage)
 FROM nginx:stable-alpine as production-stage

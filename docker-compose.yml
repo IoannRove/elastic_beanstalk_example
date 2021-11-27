@@ -1,19 +1,21 @@
 version: '3.9'
 services:
   backend:
-    image: 'ioannrove/whatsappnocontact:backend-latest'
+    image: 'ioannrove/elastic_beanstalk_example:backend-latest'
     container_name: backend
-    env_file: .env
     restart: unless-stopped
+    ports:
+      - '1234:8080'
 
   frontend:
-    image: 'ioannrove/whatsappnocontact:frontend-latest'
+    image: 'ioannrove/elastic_beanstalk_example:frontend-latest'
     container_name: frontend
-    env_file: .env
     restart: unless-stopped
+    ports:
+      - '1235:80'
 
   nginx:
-    image: 'ioannrove/whatsappnocontact:nginx-latest'
+    image: 'ioannrove/elastic_beanstalk_example:nginx-latest'
     container_name: nginx
     restart: unless-stopped
     ports:
