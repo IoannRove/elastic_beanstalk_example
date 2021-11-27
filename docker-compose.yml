@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  backend:
+    image: 'ioannrove/whatsappnocontact:backend-latest'
+    container_name: backend
+    env_file: .env
+    restart: unless-stopped
+
+  frontend:
+    image: 'ioannrove/whatsappnocontact:frontend-latest'
+    container_name: frontend
+    env_file: .env
+    restart: unless-stopped
+
+  nginx:
+    image: 'ioannrove/whatsappnocontact:nginx-latest'
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
